@@ -19,6 +19,7 @@ def test_no_connections():
     assert nx.number_of_nodes(graph.nx_graph) == 2
     assert nx.number_of_edges(graph.nx_graph) == 0
     assert nx.number_connected_components(graph.nx_graph) == 2
+    # graph.draw_graph()
 
 
 def test_all_connections():
@@ -38,6 +39,7 @@ def test_all_connections():
     assert nx.number_of_nodes(graph.nx_graph) == 2
     assert nx.number_of_edges(graph.nx_graph) == 1
     assert nx.number_connected_components(graph.nx_graph) == 1
+    # graph.draw_graph()
 
 
 def test_all_connections_different_elements():
@@ -62,6 +64,7 @@ def test_all_connections_different_elements():
     assert nx.number_of_nodes(graph.nx_graph) == 3
     assert nx.number_of_edges(graph.nx_graph) == 3
     assert nx.number_connected_components(graph.nx_graph) == 1
+    # graph.draw_graph()
 
 
 def test_connector_node():
@@ -86,3 +89,4 @@ def test_connector_node():
     assert nx.number_of_nodes(graph.nx_graph) == 3
     assert nx.number_of_edges(graph.nx_graph) == 2
     assert nx.number_connected_components(graph.nx_graph) == 1
+    # graph.draw_graph()

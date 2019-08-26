@@ -64,3 +64,25 @@ class EntityResolutionGraph():
 
     def find_entity_links(self, set, index, links):
         return set.union({(links, index) for links in links})
+
+    def draw_graph(self):
+        graph = self.nx_graph
+        print(f"Nodes: {nx.number_of_nodes(graph)}\n"
+              f"Edges: {nx.number_of_edges(graph)}\n"
+              f"Connected Components: {nx.number_connected_components(graph)}")
+
+        plt.figure(1, figsize=(8, 8))
+        conn_comps = nx.connected_component_subgraphs(graph)
+        pos = graphviz_layout(graph)
+        for g in conn_comps:
+            node_color = [random.random()] * nx.number_of_nodes(g)
+            # TODO: add names of entities
+            nx.draw(g,
+                    pos,
+                    node_size=40,
+                    node_color=node_color,
+                    vmin=0.0,
+                    vmax=1.0,
+                    with_labels=True)
+
+        plt.savefig(self.name)
