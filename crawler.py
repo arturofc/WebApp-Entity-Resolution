@@ -52,7 +52,7 @@ class SosWebAppCrawler(scrapy.Spider):
 
         for element in raw_data['DRAWER_DETAIL_LIST']:
             label = element['LABEL']
-            print(label)
+
             if label == 'Commercial Registered Agent':
                 entities['comm_registered_entity'] = element['VALUE']
             if label == 'Registered Agent':
