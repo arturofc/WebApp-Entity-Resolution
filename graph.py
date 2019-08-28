@@ -25,8 +25,7 @@ class EntityResolutionGraph():
         links_set = set()
 
         for index, entity in enumerate(entity_data):
-            # TODO: fix data to be comm_registered_agent!
-            cra = entity['comm_registered_entity']
+            cra = entity['comm_registered_agent']
             reg_agent = entity['registered_agent']
             owner = entity['owner']
 

@@ -4,12 +4,12 @@ import networkx as nx
 
 def test_no_connections():
     test_entity_1 = {
-        'comm_registered_entity': "Test1",
+        'comm_registered_agent': "Test1",
         'registered_agent': None,
         'owner': "Test1"
     }
     test_entity_2 = {
-        'comm_registered_entity': "Test2",
+        'comm_registered_agent': "Test2",
         'registered_agent': None,
         'owner': "Test2"
     }
@@ -24,12 +24,12 @@ def test_no_connections():
 
 def test_all_connections():
     test_entity_1 = {
-        'comm_registered_entity': "Test",
+        'comm_registered_agent': "Test",
         'registered_agent': 'Test',
         'owner': "Test"
     }
     test_entity_2 = {
-        'comm_registered_entity': "Test",
+        'comm_registered_agent': "Test",
         'registered_agent': 'Test',
         'owner': "Test"
     }
@@ -44,17 +44,17 @@ def test_all_connections():
 
 def test_all_connections_different_elements():
     test_entity_1 = {
-        'comm_registered_entity': "Test",
+        'comm_registered_agent': "Test",
         'registered_agent': 'Test1',
         'owner': "Test"
     }
     test_entity_2 = {
-        'comm_registered_entity': "Test",
+        'comm_registered_agent': "Test",
         'registered_agent': 'Test',
         'owner': "Test2"
     }
     test_entity_3 = {
-        'comm_registered_entity': "Test3",
+        'comm_registered_agent': "Test3",
         'registered_agent': 'Test',
         'owner': "Test"
     }
@@ -69,17 +69,17 @@ def test_all_connections_different_elements():
 
 def test_connector_node():
     test_entity_1 = {
-        'comm_registered_entity': "Test",
+        'comm_registered_agent': "Test",
         'registered_agent': 'Test1',
         'owner': "Test"
     }
     test_entity_2 = {
-        'comm_registered_entity': "Test",
+        'comm_registered_agent': "Test",
         'registered_agent': 'Test',
         'owner': None
     }
     test_entity_3 = {
-        'comm_registered_entity': "Test3",
+        'comm_registered_agent': "Test3",
         'registered_agent': 'Test',
         'owner': None
     }

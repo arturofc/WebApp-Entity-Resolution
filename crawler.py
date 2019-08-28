@@ -32,32 +32,31 @@ class SosWebAppCrawler(scrapy.Spider):
         entities = EntityItem()
         raw_data = json.loads(response.body_as_unicode())
 
-        for key in raw_data['rows']:
+        for key, data in raw_data['rows'].items():
             yield scrapy.Request(
                 method='GET',
                 url=f"{self.entity_info_api_base}/{key}/false",
                 callback=self.get_entity_info,
                 headers=self.headers,
-                meta={'entities': entities, 'entity_id': key}
+                meta={'entities': entities, 'name': data['TITLE'][0]}
             )
 
     def get_entity_info(self, response):
         entities = response.meta['entities']
-        entities['entity_id'] = response.meta['entity_id']
-        entities['comm_registered_entity'] = None
+        entities['entity_name'] = response.meta['name']
+        entities['comm_registered_agent'] = None
         entities['registered_agent'] = None
         entities['owner'] = None
-
         raw_data = json.loads(response.body_as_unicode())
 
         for element in raw_data['DRAWER_DETAIL_LIST']:
             label = element['LABEL']
 
             if label == 'Commercial Registered Agent':
-                entities['comm_registered_entity'] = element['VALUE']
-            if label == 'Registered Agent':
+                entities['comm_registered_agent'] = element['VALUE']
+            elif label == 'Registered Agent':
                 entities['registered_agent'] = element['VALUE']
-            if label == 'Owner Name':
+            elif label == 'Owner Name':
                 entities['owner'] = element['VALUE']
 
         yield entities
