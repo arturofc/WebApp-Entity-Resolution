@@ -71,18 +71,28 @@ class EntityResolutionGraph():
               f"Edges: {nx.number_of_edges(graph)}\n"
               f"Connected Components: {nx.number_connected_components(graph)}")
 
+        print(f"Saving graph to {self.name}.png...")
         plt.figure(1, figsize=(8, 8))
         conn_comps = nx.connected_component_subgraphs(graph)
         pos = graphviz_layout(graph)
         for g in conn_comps:
             node_color = [random.random()] * nx.number_of_nodes(g)
-            # TODO: add names of entities
             nx.draw(g,
                     pos,
-                    node_size=40,
+                    node_size=50,
                     node_color=node_color,
                     vmin=0.0,
                     vmax=1.0,
-                    with_labels=True)
+                    with_labels=False)
 
         plt.savefig(self.name)
+
+
+def main():
+    with open('crawler-entity-data.json', 'r') as f:
+        data = json.load(f)
+    graph = EntityResolutionGraph('entity-resolution-graph', data)
+    graph.draw_graph()
+
+if __name__ == '__main__':
+    main()
