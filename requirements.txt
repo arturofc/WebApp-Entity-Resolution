@@ -33,7 +33,7 @@ pyparsing==2.4.2
 pytest==5.1.1
 python-dateutil==2.8.0
 queuelib==1.5.0
-Scrapy==1.7.3
+Scrapy==1.8.2
 service-identity==18.1.0
 six==1.12.0
 Twisted>=20.3.0
